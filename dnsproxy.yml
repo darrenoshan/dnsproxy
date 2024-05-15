@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web-proxy:
+    image: nginx:latest
+    container_name: web-proxy
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
+    volumes:
+      - ./web-proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+
+  mycoredns:
+    image: coredns/coredns
+    container_name: mycoredns
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:53:53/udp"
+    volumes:
+      - ./mycoredns/:/root/
+    command: -conf /root/Corefile

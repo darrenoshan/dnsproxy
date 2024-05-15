@@ -1,0 +1,10 @@
+$TTL 14400
+@    IN    SOA    ns1.localhost.localdomain.    root.localhost.localdomain. (
+											202401011
+											7200
+											3600
+											1209600
+											180 )
+@       14400   IN  NS      ns.localhost.localdomain.
+@	600     IN	A	1.1.1.1
+*	600     IN	A	1.1.1.1

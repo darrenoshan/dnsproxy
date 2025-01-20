@@ -1,0 +1,24 @@
+.:53 {
+    template ANY ANY {
+        answer "{{.Name}} 60 IN A PUBLICIP"
+        fallthrough
+    }
+    template ANY CNAME {
+        answer "{{.Name}} 60 IN CNAME PUBLICIP"
+        fallthrough
+    }
+
+    template ANY NS {
+        answer "{{.Name}} 60 IN NS PUBLICIP"
+        fallthrough
+    }
+    log
+    errors
+}
+
+regex  ^.*\.ir$  ^.*\.google\.com$ ^.*\.ubuntu\.com$ ^.*\.debian\.com$  ^.*\.golang\.org$ ^.*\.github\.com$  ^.*\.gorm\.io$  {
+    cache
+    forward . 8.8.8.8:53
+    log
+    errors
+}
